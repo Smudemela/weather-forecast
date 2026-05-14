@@ -17,6 +17,11 @@ data = response.json()
 
 df = pd.DataFrame(data["hourly"])
 df["time"] = pd.to_datetime(df["time"])
+df["hour"] = df["time"].dt.hour
+df["day_of_year"] = df["time"].dt.day_of_year
+df["temp_lag1"] = df["temperature_2m"].shift(1)
+df["temp_rolling3"] = df["temperature_2m"].rolling(3).mean()
+df = df.dropna()
 
-
-print(df)
+print(df.head())
+print(df.columns)
