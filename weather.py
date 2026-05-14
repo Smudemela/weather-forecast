@@ -25,3 +25,13 @@ df = df.dropna()
 
 print(df.head())
 print(df.columns)
+
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+
+X = df[["hour", "day_of_year", "temp_lag1", "temp_rolling3", "precipitation", "windspeed_10m"]]
+y = df["temperature_2m"]
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+model = RandomForestRegressor (n_estimator=100, random_state=42)
