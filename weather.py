@@ -42,7 +42,7 @@ from sklearn.model_selection import train_test_split
 X = df[["hour", "day_of_year", "temp_lag1", "temp_rolling3", "precipitation", "windspeed_10m"]]
 y = df["temperature_2m"]
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5, random_state=42)
 
 model = RandomForestRegressor (n_estimators=100, random_state=42)
 
@@ -52,4 +52,15 @@ predictions = model.predict(X_test)
 
 from sklearn.metrics import mean_absolute_error
 print("MAE", mean_absolute_error(y_test, predictions))
+
+import matplotlib.pyplot as plt
+plt.plot(df["time"], df["temperature_2m"], label="Actual")
+sorted_idx = y_test.index.sort_values()
+plt.plot(df["time"].iloc[sorted_idx], predictions[sorted_idx.argsort()], label="Predicted")
+plt.legend()
+plt.xlabel("Date")
+plt.ylabel("Temperature (°F)")
+plt.title("Actual vs Predicted Temperature - Folsom, CA")
+plt.show()
+
 
