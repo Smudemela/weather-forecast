@@ -32,3 +32,16 @@ A machine learning project that fetches real-time weather data and predicts hour
 
 ## Results
 The model achieves a Mean Absolute Error (MAE) of ~1.2°F which means predictions are on average only 1.2 degrees off from the actual temperature.
+
+## Project Milestones
+- Set up a Python project from scratch
+- Learned Git & GitHub
+- Fetched live data from a real API
+- Cleaned and prepared data with Pandas
+- Built and trained a real ML model
+- Achieved ~1.2°F prediction accuracy
+- Created a professional chart
+- Wrote a professional README
+- Pushed everything to GitHub
+
+*Last Updated May 22*
